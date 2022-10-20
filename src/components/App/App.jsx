@@ -77,15 +77,15 @@ function App() {
         axios({
             method: 'DELETE',
             url: `/LIST/${id}`
+        })
             .then(res => {
                 console.log(res);
                 getItems();
             })
             .catch(err => {
                 console.log(err);
-            })
-        });
-    }
+            });
+    };
     
     const onClear = ()=>{
         console.log('works');
