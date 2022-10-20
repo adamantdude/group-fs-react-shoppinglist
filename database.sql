@@ -1,8 +1,9 @@
 -- CREATE DATABASE: fs-react-shopping
-
+DROP TABLE IF EXISTS "shoppingList";
 -- Don't forget to add your create table SQL 
 -- It is also helpful to include some test data
 CREATE TABLE "shoppingList" (
+    "id" SERIAL PRIMARY KEY,
     "name" VARCHAR(80), 
     "quantity" INTEGER, 
     "units" VARCHAR(20), 
