@@ -5,7 +5,7 @@ import './App.css';
 import axios from 'axios';
 import AddItem from '../AddItem/AddItem.jsx';
 import GroceryList from '../GroceryList/GroceryList.jsx';
-
+import Swal2 from 'sweetalert2'
 
 function App() {
 
@@ -60,18 +60,33 @@ function App() {
     
     const resetItems = ()=>{
         console.log('works');
-        axios({
-            method: 'PUT',
-            url: `/LIST`,
-        })
-            .then(res => {
-                console.log(res);
-                getItems();
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+        
+        Swal2.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reset it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axios({
+                    method: 'PUT',
+                    url: `/LIST`,
+                })
+                    .then(res => {
+                        console.log(res);
+                        getItems();
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+          });
+
+        
+    };
 
     const removeItem = (id) => {
         axios({
@@ -88,18 +103,34 @@ function App() {
     };
     
     const onClear = ()=>{
-        console.log('works');
-        axios({
-            method: 'DELETE',
-            url: `/LIST`,
-        })
-            .then(res => {
-                console.log(res);
-                getItems();
-            })
-            .catch(err => {
-                console.log(err);
-            });
+
+        Swal2.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                console.log('works');
+                axios({
+                    method: 'DELETE',
+                    url: `/LIST`,
+                })
+                    .then(res => {
+                        console.log(res);
+                        getItems();
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+          })
+
+        
+        
     };
 
     return (
