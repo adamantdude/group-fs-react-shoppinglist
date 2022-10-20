@@ -83,8 +83,9 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
-            });
-    };
+            })
+        });
+    }
     
     const onClear = ()=>{
         console.log('works');
