@@ -43,6 +43,34 @@ function App() {
         });
     };
 
+    const buyItem = (id) => {
+        axios({
+            method: 'PUT',
+            url: `/LIST/${id}`
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const removeItem = (id) => {
+        axios({
+            method: 'DELETE',
+            url: `/LIST/${id}`
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     return (
         <div className="App">
             <Header />
@@ -53,7 +81,7 @@ function App() {
             <h2>Shopping List</h2>
             <button>Reset</button>
             <button>Clear</button>
-            <GroceryList groceryList={groceryList} />
+            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
         </div>
     );
 }
