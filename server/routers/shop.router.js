@@ -20,4 +20,19 @@ router.post('/', (req, res) => {
         })
 })
 
+router.get('/', (req, res) => {
+    console.log('inside GET');
+
+    let sqlText = `
+        SELECT * FROM "shoppingList";`;
+    pool.query(sqlText)
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log(`Error making database query ${sqlText}`, err);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;
