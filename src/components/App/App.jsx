@@ -133,17 +133,29 @@ function App() {
         
     };
 
+    const editItem = (editParse) => {
+        axios({
+            method: 'PUT',
+            url: `/LIST/edit/${editParse.id}`,
+            data: editParse
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     return (
         <div className="App">
             <Header />
-            <main>
-                <p>Under Construction...</p>
-            </main>
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
             <button id ="resetButton" onClick={resetItems}>Reset</button>
             <button id="clearButton" onClick={onClear}>Clear</button>
-            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
+            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem} editFN={editItem}/>
         </div>
     );
 }
