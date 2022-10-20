@@ -17,8 +17,8 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             res.sendStatus(500);
-        })
-})
+        });
+});
 
 router.get('/', (req, res) => {
     console.log('inside GET');
@@ -31,6 +31,36 @@ router.get('/', (req, res) => {
         })
         .catch(err => {
             console.log(`Error making database query ${sqlText}`, err);
+            res.sendStatus(500);
+        });
+});
+
+//PUT resetItems
+router.put('/', (req, res) => {
+    console.log('inside PUT resetItems');
+
+    let sqlText = `
+        UPDATE  "shoppingList"
+        SET "purchased" = FALSE;`;
+    pool.query(sqlText)
+        .then(result => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        });
+});
+
+router.delete('/', (req, res) => {
+    console.log('inside delete all');
+
+    let sqlText = `
+        DELETE FROM "shoppingList";`;
+    pool.query(sqlText)
+        .then(result => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
             res.sendStatus(500);
         })
 })

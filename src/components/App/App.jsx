@@ -27,8 +27,8 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
-            })
-    }
+            });
+    };
 
     const getItems = ()=>{
         axios({
@@ -57,11 +57,12 @@ function App() {
                 console.log(err);
             })
     }
-
-    const removeItem = (id) => {
+    
+    const resetItems = ()=>{
+        console.log('works');
         axios({
-            method: 'DELETE',
-            url: `/LIST/${id}`
+            method: 'PUT',
+            url: `/LIST`,
         })
             .then(res => {
                 console.log(res);
@@ -72,6 +73,34 @@ function App() {
             })
     }
 
+    const removeItem = (id) => {
+        axios({
+            method: 'DELETE',
+            url: `/LIST/${id}`
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+    
+    const onClear = ()=>{
+        console.log('works');
+        axios({
+            method: 'DELETE',
+            url: `/LIST`,
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
     return (
         <div className="App">
             <Header />
@@ -80,9 +109,9 @@ function App() {
             </main>
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
-            <button>Reset</button>
-            <button>Clear</button>
             <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
+            <button id ="resetButton" onClick={resetItems}>Reset</button>
+            <button id="clearButton" onClick={onClear}>Clear</button>
         </div>
     );
 }
