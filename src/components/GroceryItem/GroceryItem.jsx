@@ -16,8 +16,18 @@ function GroceryItem({groceryItem, buyFN, removeFN}){
                 <p>{groceryItem.name}</p>
                 <p>{groceryItem.quantity} {groceryItem.units}</p>
                 <div>
-                    <button onClick={buyHandle}>Buy</button>
-                    <button onClick={removeHandle}>Remove</button>
+                    {!groceryItem.purchased &&
+                    <>
+                        <button onClick={buyHandle}>Buy</button>
+                        <button onClick={removeHandle}>Remove</button>
+                    </>
+                    }
+                    {groceryItem.purchased &&
+                    <>
+                        <label>Purchased</label>
+                    </>
+                    }
+                    
                 </div>
             </div>
         </>
