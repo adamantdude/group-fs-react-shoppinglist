@@ -9,8 +9,12 @@ function AddItem({addFn}) {
 
     const submitHandle = (e) => {
         e.preventDefault();
-        if(itemName && itemQuantity && itemUnit)
-            addFn({item: itemName, quantity: itemQuantity, units: itemUnit})
+        if(itemName && itemQuantity && itemUnit) {
+            addFn({item: itemName, quantity: itemQuantity, units: itemUnit});
+            setItemName('');
+            setQuantity(1);
+            setUnit('');
+        }
         else
             alert('Please fill out the entire form');
     }

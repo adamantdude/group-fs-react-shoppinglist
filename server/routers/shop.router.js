@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     console.log('inside POST', req.body);
 
     let sqlText = `
-        INSERT INTO "shoppingList" ("item", "quantity", "units", "purchased")
+        INSERT INTO "shoppingList" ("name", "quantity", "units", "purchased")
         VALUES ($1, $2, $3, $4)
     `
     pool.query(sqlText, [req.body.item, req.body.quantity, req.body.units, false])
