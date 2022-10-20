@@ -17,14 +17,9 @@ The Shopping List app helps anyone stay on top of their grocery shopping. Simply
 
 ## Screen Shot
 
-![Screenshot](images/notaskCompleted.jpg)
-No task completed.
+![Screenshot](images/ui.jpeg)
 
-![Screenshot](images/someTaskCompleted.jpg)
-Some tasks completed.
 
-![Screenshot](images/areYouSure.jpg)
-Are you sure you want to delete the task.
 
 
 ### Prerequisites
