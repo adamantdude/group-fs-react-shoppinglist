@@ -97,4 +97,21 @@ router.put('/:id', (req, res) => {
         })
 })
 
+router.put('/edit/:id', (req, res) => {
+    console.log('inside EDIT:id');
+    console.log(req.body);
+
+    let sqlText = `
+        UPDATE "shoppingList" SET "name" = $1, "quantity" = $2, "units" = $3 WHERE "id" = $4
+    `
+
+    pool.query(sqlText, [req.body.name, req.body.quantity, req.body.units, req.body.id])
+        .then(result => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;
