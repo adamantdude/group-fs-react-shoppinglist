@@ -22,7 +22,10 @@ function App() {
             data: item
         })
             .then(res => {
-                console.log(res);
+                if(res.status == 200)
+                    alert(res.data);
+                else
+                    console.log(res);
                 getItems();
             })
             .catch(err => {
@@ -153,8 +156,10 @@ function App() {
             <Header />
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
-            <button id ="resetButton" onClick={resetItems}>Reset</button>
-            <button id="clearButton" onClick={onClear}>Clear</button>
+            <div className="buttons">
+                <button id ="resetButton" onClick={resetItems}>Reset</button>
+                <button id="clearButton" onClick={onClear}>Clear</button>
+            </div>
             <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem} editFN={editItem}/>
         </div>
     );

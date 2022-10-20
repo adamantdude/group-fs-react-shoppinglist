@@ -15,3 +15,12 @@ input {
     width: 120px;
 }
 
+form button {
+    border: 0;
+    border-radius: 5px;
+    background-color: lightgreen;
+}
+
+form {
+    padding-left: 5%;
+}
