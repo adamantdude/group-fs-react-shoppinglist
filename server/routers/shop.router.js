@@ -65,4 +65,34 @@ router.delete('/', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    console.log('inside DELETE:id');
+
+    let sqlText = `
+        DELETE FROM "shoppingList" WHERE "id" = $1
+    `
+    pool.query(sqlText, [req.params.id])
+        .then(result => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        })
+})
+
+router.put('/:id', (req, res) => {
+    console.log('inside PUT:id');
+
+    let sqlText = `
+        UPDATE "shoppingList" SET "purchased" = TRUE WHERE "id" = $1
+    `
+    pool.query(sqlText, [req.params.id])
+        .then(result => {
+            res.sendStatus(200);
+        })
+        .catch(err => {
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

@@ -23,6 +23,7 @@ function App() {
         })
             .then(res => {
                 console.log(res);
+                getItems();
             })
             .catch(err => {
                 console.log(err);
@@ -43,6 +44,20 @@ function App() {
         });
     };
 
+    const buyItem = (id) => {
+        axios({
+            method: 'PUT',
+            url: `/LIST/${id}`
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+    
     const resetItems = ()=>{
         console.log('works');
         axios({
@@ -55,9 +70,22 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
+            })
+    }
+
+    const removeItem = (id) => {
+        axios({
+            method: 'DELETE',
+            url: `/LIST/${id}`
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
             });
     };
-
+    
     const onClear = ()=>{
         console.log('works');
         axios({
@@ -81,9 +109,9 @@ function App() {
             </main>
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
+            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
             <button id ="resetButton" onClick={resetItems}>Reset</button>
             <button id="clearButton" onClick={onClear}>Clear</button>
-            <GroceryList groceryList={groceryList} />
         </div>
     );
 }
