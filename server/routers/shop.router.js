@@ -48,6 +48,20 @@ router.put('/', (req, res) => {
         })
         .catch(err => {
             res.sendStatus(500);
+        });
+});
+
+router.delete('/', (req, res) => {
+    console.log('inside delete all');
+
+    let sqlText = `
+        DELETE FROM "shoppingList";`;
+    pool.query(sqlText)
+        .then(result => {
+            res.sendStatus(201);
+        })
+        .catch(err => {
+            res.sendStatus(500);
         })
 })
 

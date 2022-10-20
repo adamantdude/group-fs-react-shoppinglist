@@ -44,6 +44,7 @@ function App() {
     };
 
     const resetItems = ()=>{
+        console.log('works');
         axios({
             method: 'PUT',
             url: `/LIST`,
@@ -59,6 +60,17 @@ function App() {
 
     const onClear = ()=>{
         console.log('works');
+        axios({
+            method: 'DELETE',
+            url: `/LIST`,
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
 
     return (
