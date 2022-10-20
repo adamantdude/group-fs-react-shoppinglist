@@ -23,6 +23,7 @@ function App() {
         })
             .then(res => {
                 console.log(res);
+                getItems();
             })
             .catch(err => {
                 console.log(err);

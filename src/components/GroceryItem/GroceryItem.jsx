@@ -1,3 +1,5 @@
+import './GroceryItem.css';
+
 function GroceryItem({groceryItem, buyFN, removeFN}){
 
     const buyHandle = () => {
@@ -10,12 +12,13 @@ function GroceryItem({groceryItem, buyFN, removeFN}){
 
     return(
         <>
-            <div>
-                <label>{groceryItem.name}</label>
-                <label>{groceryItem.quantity}</label>
-                <label>{groceryItem.units}</label>
-                <button onClick={buyHandle}>Buy</button>
-                <button onClick={removeHandle}>Remove</button>
+            <div className="border">
+                <p>{groceryItem.name}</p>
+                <p>{groceryItem.quantity} {groceryItem.units}</p>
+                <div>
+                    <button onClick={buyHandle}>Buy</button>
+                    <button onClick={removeHandle}>Remove</button>
+                </div>
             </div>
         </>
     );
