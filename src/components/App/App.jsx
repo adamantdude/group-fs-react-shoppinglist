@@ -26,8 +26,8 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
-            })
-    }
+            });
+    };
 
     const getItems = ()=>{
         axios({
@@ -43,6 +43,24 @@ function App() {
         });
     };
 
+    const resetItems = ()=>{
+        axios({
+            method: 'PUT',
+            url: `/LIST`,
+        })
+            .then(res => {
+                console.log(res);
+                getItems();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    const onClear = ()=>{
+        console.log('works');
+    };
+
     return (
         <div className="App">
             <Header />
@@ -51,8 +69,8 @@ function App() {
             </main>
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
-            <button>Reset</button>
-            <button>Clear</button>
+            <button id ="resetButton" onClick={resetItems}>Reset</button>
+            <button id="clearButton" onClick={onClear}>Clear</button>
             <GroceryList groceryList={groceryList} />
         </div>
     );
