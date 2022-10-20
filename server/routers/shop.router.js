@@ -24,7 +24,9 @@ router.get('/', (req, res) => {
     console.log('inside GET');
 
     let sqlText = `
-        SELECT * FROM "shoppingList";`;
+    SELECT * FROM "shoppingList"
+    ORDER BY  "purchased", "id";
+        `;
     pool.query(sqlText)
         .then(result => {
             res.send(result.rows);
