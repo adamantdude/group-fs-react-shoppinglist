@@ -110,9 +110,9 @@ function App() {
             </main>
             <AddItem addFn={addItem}/>
             <h2>Shopping List</h2>
-            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
             <button id ="resetButton" onClick={resetItems}>Reset</button>
             <button id="clearButton" onClick={onClear}>Clear</button>
+            <GroceryList groceryList={groceryList} buyFN={buyItem} removeFN={removeItem}/>
         </div>
     );
 }
