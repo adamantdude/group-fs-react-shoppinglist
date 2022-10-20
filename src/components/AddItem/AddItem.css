@@ -1,0 +1,16 @@
+input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#item {
+    width: 250px;
+}
+
+#quant {
+    width: 50px;
+}
+
+#unit {
+    width: 120px;
+}
