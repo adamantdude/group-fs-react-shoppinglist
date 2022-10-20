@@ -7,6 +7,12 @@ const pool = require('../modules/pool.js');
 router.post('/', (req, res) => {
     console.log('inside POST', req.body);
 
+    if(!(req.body.item && req.body.quantity && req.body.units)) {
+        res.send('Not all required fields are filled out!');
+        // res.sendStatus(400);
+        return;
+    }
+
     let sqlText = `
         INSERT INTO "shoppingList" ("name", "quantity", "units", "purchased")
         VALUES ($1, $2, $3, $4)
